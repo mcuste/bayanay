@@ -1,0 +1,1 @@
+Create a pie chart showing our annual cloud infrastructure cost breakdown: Compute (EC2/GKE) 43%, Managed Databases (RDS/Cloud SQL) 21%, Object Storage (S3/GCS) 14%, Data Warehouse (BigQuery/Redshift) 11%, Networking & CDN 7%, Other managed services 4%.

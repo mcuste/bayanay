@@ -1,0 +1,48 @@
+# Clippy Preset
+# Pedantic + restriction cherry-picks. Deny on correctness/safety lints.
+# No-cheating rules prevent AI from suppressing lints with #[allow].
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"
+missing_debug_implementations = "warn"
+unreachable_pub = "warn"
+rust_2018_idioms = { level = "warn", priority = -1 }
+
+[workspace.lints.clippy]
+# Pedantic group (silence the noisy ones)
+pedantic = { level = "warn", priority = -1 }
+missing_errors_doc = "allow"
+must_use_candidate = "allow"
+module_name_repetitions = "allow"
+
+# Panic prevention — deny: hard correctness failures
+unwrap_used = "deny"
+expect_used = "deny"
+panic = "deny"
+panic_in_result_fn = "deny"
+unreachable = "deny"
+indexing_slicing = "deny"
+
+# No cheating — AI must fix, not suppress
+undocumented_unsafe_blocks = "deny"
+allow_attributes_without_reason = "deny"
+allow_attributes = "deny"
+
+# Debug artifacts — should never appear in accepted code
+dbg_macro = "deny"
+todo = "deny"
+unimplemented = "deny"
+print_stdout = "deny" # allow on CLIs
+print_stderr = "deny" # allow on CLIs
+
+# Async correctness
+await_holding_lock = "deny"
+async_yields_async = "deny"
+large_futures = "warn"
+
+# Casts — silent data loss is a correctness failure
+as_conversions = "deny"
+cast_possible_truncation = "deny"
+cast_sign_loss = "deny"
+integer_division = "deny"

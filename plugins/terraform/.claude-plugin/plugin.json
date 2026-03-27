@@ -1,0 +1,7 @@
+{
+  "name": "terraform",
+  "description": "Terraform code generation, evaluation, linting, and research skills and agents",
+  "author": {
+    "name": "mcuste"
+  }
+}

@@ -1,0 +1,5 @@
+# Pyright Preset: Chill — Catch type errors, no annotation enforcement
+
+[tool.pyright]
+typeCheckingMode = "basic"
+pythonVersion = "3.12"

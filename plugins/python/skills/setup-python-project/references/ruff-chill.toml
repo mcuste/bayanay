@@ -1,0 +1,16 @@
+# Ruff Preset: Chill — Fast iteration, application code
+# Just catch real errors. No style opinions, no docstring enforcement.
+
+[tool.ruff]
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+    "E4", "E7", "E9",    # pycodestyle errors (subset)
+    "F",                   # pyflakes
+    "I",                   # isort
+    "UP",                  # pyupgrade
+    "B",                   # bugbear
+    "T20",                 # print statements
+    "RUF",                 # ruff-specific
+]

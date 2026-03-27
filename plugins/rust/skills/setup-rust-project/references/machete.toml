@@ -1,0 +1,19 @@
+# Cargo Machete — Workspace-level ignore list for common false positives
+# Crates that are used but not visible as `use` statements in source.
+
+[workspace.metadata.cargo-machete]
+ignored = [
+    # Proc-macro / codegen crates (used at compile time, no `use` in src/)
+    "prost",                 # protobuf codegen via build.rs / tonic-build
+    "serde_derive",          # re-exported through serde's derive feature
+    "thiserror",             # proc-macro, sometimes not detected
+    "tracing-attributes",    # re-exported through tracing's attributes feature
+
+    # Crates used only via macros from other crates
+    "log",                   # used via macros re-exported by other logging crates
+    "criterion",             # benchmark harness, used only via macros
+
+    # Crates used only in build.rs or codegen
+    "cc",                    # build.rs native compilation
+    "bindgen",               # build.rs FFI generation
+]

@@ -1,0 +1,1 @@
+I need a PRD for a simple internal uptime dashboard. Our SRE team currently checks three different monitoring tools to see if services are healthy. We want a single page that aggregates health status from Datadog, PagerDuty, and our custom healthcheck endpoints. About 15 engineers would use it daily.

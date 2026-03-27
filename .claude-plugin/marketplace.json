@@ -1,0 +1,28 @@
+{
+  "name": "bayanay",
+  "owner": {
+    "name": "mcuste"
+  },
+  "plugins": [
+    {
+      "name": "general",
+      "source": "./plugins/general"
+    },
+    {
+      "name": "rust",
+      "source": "./plugins/rust"
+    },
+    {
+      "name": "terraform",
+      "source": "./plugins/terraform"
+    },
+    {
+      "name": "python",
+      "source": "./plugins/python"
+    },
+    {
+      "name": "software",
+      "source": "./plugins/software"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+# Pyright Preset: Medium — Recommended starting point for serious projects
+
+[tool.pyright]
+typeCheckingMode = "standard"
+pythonVersion = "3.12"
+reportMissingTypeStubs = "warning"
+reportUnusedImport = "warning"
+reportUnusedVariable = "warning"
+reportDuplicateImport = "warning"
+reportDeprecated = "warning"

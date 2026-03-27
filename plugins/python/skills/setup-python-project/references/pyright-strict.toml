@@ -1,0 +1,12 @@
+# Pyright Preset: Strict — Libraries, safety-critical code, AI code gates
+# Use typeCheckingMode (not the strict path list) so individual rules can be overridden.
+
+[tool.pyright]
+typeCheckingMode = "strict"
+pythonVersion = "3.12"
+
+# Suppress the cascade-prone rules
+reportMissingTypeStubs = "warning"
+reportUnknownMemberType = "warning"
+reportUnknownArgumentType = "warning"
+reportUnknownParameterType = "warning"

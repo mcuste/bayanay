@@ -1,0 +1,44 @@
+# Checkov Preset: Chill — Critical security only
+# Blocks encryption, public access, IAM wildcards, and open SSH/RDP.
+# Everything else is soft-fail (warn but don't block CI).
+
+framework:
+  - terraform
+
+soft-fail: true
+
+hard-fail-on:
+  # Encryption at rest
+  - CKV_AWS_19       # S3 encrypted at rest
+  - CKV_AWS_3        # EBS encrypted
+  - CKV_AWS_16       # RDS encrypted at rest
+  - CKV_AZURE_3      # Storage account HTTPS only
+  - CKV_AZURE_1      # Managed disk encrypted
+  - CKV_GCP_37       # Compute disk encrypted with CMK
+  - CKV_GCP_6        # Cloud SQL requires SSL
+
+  # No public access
+  - CKV_AWS_17       # RDS not publicly accessible
+  - CKV_AWS_20       # S3 no public READ
+  - CKV_AWS_57       # S3 no public WRITE
+  - CKV_AZURE_35     # Storage default network deny
+  - CKV_GCP_11       # Cloud SQL not publicly accessible
+
+  # IAM least privilege
+  - CKV_AWS_62       # No full admin privileges
+  - CKV_AWS_63       # No IAM wildcard actions
+  - CKV_AWS_1        # No full admin in policy documents
+
+  # Network — no open SSH/RDP
+  - CKV_AWS_24       # No SSH from 0.0.0.0/0
+  - CKV_AWS_25       # No RDP from 0.0.0.0/0
+  - CKV_AZURE_9      # No SSH from 0.0.0.0/0
+  - CKV_AZURE_12     # No RDP from 0.0.0.0/0
+
+skip-check:
+  # Known false positives
+  - CKV_AWS_300      # S3 lifecycle false positives
+  - CKV_AWS_382      # VPC SG egress rule false positives
+  - CKV_SECRET_6     # Base64 high-entropy false positives
+
+compact: true

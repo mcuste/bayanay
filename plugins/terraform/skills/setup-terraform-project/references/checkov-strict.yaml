@@ -1,0 +1,19 @@
+# Checkov Preset: Strict — Maximum enforcement for regulated/compliance environments
+# All checks run. Only known false positives skipped. LOW severity soft-fails.
+
+framework:
+  - terraform
+
+skip-check:
+  # --- Known false positives only ---
+  - CKV_AWS_300      # S3 lifecycle false positives
+  - CKV_AWS_382      # VPC SG egress rule false positives
+  - CKV_SECRET_6     # Base64 high-entropy false positives
+  - CKV_GCP_73       # Dynamic rule false positives
+  - CKV_AZURE_36     # Dynamic content false positives
+  - CKV2_AZURE_31    # Special subnet false positives
+
+soft-fail-on:
+  - LOW              # LOW severity checks are advisory
+
+compact: true

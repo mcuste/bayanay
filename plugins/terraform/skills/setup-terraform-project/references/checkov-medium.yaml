@@ -1,0 +1,35 @@
+# Checkov Preset: Medium — Recommended for production projects
+# All checks run. Known-noisy checks soft-fail. False positives skipped.
+
+framework:
+  - terraform
+
+skip-check:
+  # --- Known false positives ---
+  - CKV_AWS_300      # S3 lifecycle false positives
+  - CKV_AWS_382      # VPC SG egress rule false positives
+  - CKV_SECRET_6     # Base64 high-entropy false positives
+  - CKV_GCP_73       # Dynamic rule false positives
+  - CKV_AZURE_36     # Dynamic content false positives
+
+  # --- Too restrictive for most projects ---
+  - CKV_AWS_144      # S3 cross-region replication — requires second region
+  - CKV_AWS_143      # S3 object lock — destructive in dev environments
+  - CKV2_AWS_6       # S3 lifecycle — not always required
+
+soft-fail-on:
+  # Logging — enforce in strict, warn here
+  - CKV_AWS_18       # S3 access logging (log bucket recursion)
+  - CKV_AWS_91       # ALB access logging
+  - CKV_AWS_92       # Classic ELB access logging
+  - CKV_AWS_158      # CloudWatch Log Group CMK encryption
+
+  # Data protection — warn only
+  - CKV_AWS_21       # S3 versioning (storage costs in dev/staging)
+  - CKV_AWS_130      # VPC subnets public IP (intentional in many architectures)
+  - CKV2_AWS_5       # Unrestricted egress (most workloads need outbound)
+
+  # Encryption with CMK — SSE-S3/default is often sufficient
+  - CKV_AWS_145      # S3 encrypted with CMK
+
+compact: true

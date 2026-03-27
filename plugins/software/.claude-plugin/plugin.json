@@ -1,0 +1,7 @@
+{
+  "name": "software",
+  "description": "Software architecture skills including ADR, C4 diagrams, and RFC generation",
+  "author": {
+    "name": "mcuste"
+  }
+}

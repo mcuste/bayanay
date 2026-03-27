@@ -1,0 +1,1 @@
+Write a PRD for a CLI tool that converts CSV files to JSON. It should handle large files without running out of memory, support custom column mappings via a config file, and output to stdout or a file. Target audience is data engineers who pipe data between systems.

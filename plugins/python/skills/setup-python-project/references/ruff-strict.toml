@@ -1,0 +1,39 @@
+# Ruff Preset: Strict — Libraries, safety-critical code, AI code gates
+# Maximum coverage with ALL then suppress the known-noisy rules.
+# Every rule not explicitly silenced is active.
+
+[tool.ruff]
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    # Docstring conflicts — pick one style
+    "D203",                # conflicts with D211
+    "D213",                # conflicts with D212
+
+    # Formatter-incompatible
+    "COM812",              # trailing comma conflicts with formatter
+    "ISC001",              # implicit string concat conflicts with formatter
+
+    # Too noisy / opinionated
+    "ANN101",              # missing type annotation for self
+    "ANN102",              # missing type annotation for cls
+    "FBT001",              # boolean positional argument
+    "FBT002",              # boolean default positional argument
+    "TD002",               # missing TODO author
+    "TD003",               # missing TODO link
+    "FIX002",              # line contains TODO
+    "ERA001",              # commented-out code (high false positive)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = [
+    "S101",                # assert is fine in tests
+    "PLR2004",             # magic values are fine in tests
+    "D100", "D101", "D102", "D103",  # no docstrings needed in tests
+    "ANN",                 # no annotations needed in tests
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"

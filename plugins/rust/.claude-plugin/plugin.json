@@ -1,0 +1,7 @@
+{
+  "name": "rust",
+  "description": "Rust code generation, evaluation, linting, and research skills with guideline-based TDD quality loops",
+  "author": {
+    "name": "mcuste"
+  }
+}
