@@ -2,28 +2,30 @@
 
 ## DO
 
-- Start from the conversation — extract decisions, personas, and constraints already discussed before asking for more
-- Ask open-ended clarifying questions — never present multi-choice options or suggest answers; let the user articulate intent in their own words
-- Use the user's own language and domain terms; align on standard terminology when it adds precision
-- Ground the problem statement in evidence (user feedback, data, observed workarounds), not assertions
-- Challenge vague inputs — push back when requirements are ambiguous or untestable
-- Keep requirements at the *behavior* level ("user can filter by date range"), not system level
-- Distinguish must-haves from nice-to-haves explicitly (MoSCoW prioritization)
-- Flag scope creep — if the user keeps adding, prompt them to define what's out
-- Identify distinct user personas even if the user only describes one
+- Extract decisions, personas, constraints from conversation before asking more
+- Ask open-ended clarifying questions — never multi-choice or suggested answers
+  - Good: "What problem are users facing?" / "Who are distinct user types?" / "What signals success in six months?"
+  - Bad: "Should target be (a) devs (b) designers (c) both?" — constrains answer
+- Use user's language and domain terms; align on standard terminology when it adds precision
+- Ground problem statement in evidence (feedback, data, workarounds), not assertions
+- Challenge vague or untestable inputs
+- Keep requirements at behavior level ("user can filter by date range"), not system level
+- Distinguish must-haves from nice-to-haves (MoSCoW)
+- Flag scope creep — prompt user to define what's out
+- Identify distinct personas even if user describes only one
 
 ## DON'T
 
-- Don't inject technical detail — no database schemas, API designs, or framework choices
-- Don't mix problem and solution — if a "requirement" reads like a design decision, reframe it as observable behavior
-- Don't present multi-choice questions — they constrain the user's thinking and bias toward your assumptions
-- Don't invent features the user didn't ask for — no "you might also want..."
-- Don't write aspirational fluff — every requirement must be testable or measurable
-- Don't over-structure a simple product — a small tool doesn't need all 11 sections
-- Don't assume a single user type — identify distinct personas even when the user describes only one
-- Don't prescribe UI/UX specifics — focus on outcomes, not pixel-level interactions
-- Don't include edge case / error handling detail — those belong in technical specs
+- Inject technical detail — no schemas, API designs, framework choices
+- Mix problem and solution — reframe design decisions as observable behavior
+- Present multi-choice questions — they constrain thinking and bias toward your assumptions
+- Invent features user didn't ask for
+- Write aspirational fluff — every requirement must be testable or measurable
+- Over-structure simple products — small tool ≠ all 11 sections
+- Assume single user type
+- Prescribe UI/UX specifics — focus on outcomes
+- Include edge case / error handling detail — belongs in technical specs
 
 ## PRD Lifecycle
 
-The PRD is written once at project start. Once development begins, the source of truth moves to code, tickets, and technical docs. Only revisit the PRD for major pivots or fundamental scope changes — not incremental adjustments. If updated, add a changelog entry (date, what changed, why) to preserve the original intent.
+PRD written once at project start. Once development begins, source of truth moves to code, tickets, technical docs. Only revisit for major pivots or fundamental scope changes. If updated, add changelog entry (date, what changed, why).

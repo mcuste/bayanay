@@ -1,72 +1,70 @@
 # PRD-{NNN}: {Title}
 
-| ID        | Status | Author | Created      | Last Updated |
-|-----------|--------|--------|--------------|--------------|
-| PRD-{NNN} | Draft  | {name} | {YYYY-MM-DD} | {YYYY-MM-DD} |
+- **ID**: PRD-{NNN}
+- **Status**: Draft
+- **Author**: {name}
+- **Created**: {YYYY-MM-DD}
+- **Last Updated**: {YYYY-MM-DD}
 
 ## Problem Statement
 
-What problem are we solving? Who experiences it? What is the impact of not solving it?
-
-Ground this in evidence — user feedback, observed workarounds, data, or research. State what you know and how you know it.
+What problem, who experiences it, impact of not solving it. Ground in evidence — feedback, workarounds, data.
 
 ## Context & Motivation
 
-Why now? What alternatives or workarounds exist today? Why is this the right approach?
+Why now? Alternatives today? Why this approach?
 
 ## User Personas & Use Cases
 
-Who are the users? Identify distinct personas and their key workflows — don't assume a single user type.
+Distinct personas and key workflows — never single generic "user".
 
-- **Persona A** ({role/context}): {key workflow or pain point}
-- **Persona B** ({role/context}): {key workflow or pain point}
+- **Persona A** ({role/context}): {workflow or pain point}
+- **Persona B** ({role/context}): {workflow or pain point}
 
 ## Objective & Goals
 
-Strategic alignment — how does this serve business goals?
-
-- **Must have**: What this must deliver to be considered successful.
-- **Should have**: Important but not blocking launch.
-- **Non-goals**: What is explicitly out of scope and why.
+- **Must have**: Required for success.
+- **Should have**: Important, not blocking launch.
+- **Non-goals**: Explicitly out of scope and why.
 
 ## Scope
 
-**In scope**: {what this initiative covers}
+**In scope**: {what this covers}
 
-**Out of scope**: {what is explicitly excluded}
+**Out of scope**: {what is excluded}
 
 ## User Stories & Requirements
 
-Behavior-level statements only — no architecture or implementation detail. Each story includes acceptance criteria.
+Behavior-level only — no architecture or implementation. Each story has acceptance criteria.
 
 - As a {persona}, I want {action} so that {benefit}.
-  - **Acceptance**: {measurable condition that must be true}
+  - **Acceptance**: {measurable condition}
 
 ## Non-Functional Requirements
 
-- **Performance**: Specific targets (e.g., p99 < 100ms at 10k req/s)
-- **Reliability**: Uptime targets, failure modes, recovery expectations
-- **Security**: Auth, authorization, data protection requirements
+- **Performance**: Numeric targets (e.g., p99 < 100ms at 10k req/s)
+- **Reliability**: Uptime, failure modes, recovery
+- **Security**: Auth, authorization, data protection
 - **Scalability**: Expected load, growth projections
 
 ## Assumptions & Dependencies
 
-- **Assumptions**: Things expected to be true but not guaranteed.
-- **Constraints**: Limits on time, budget, technology, or team capacity.
-- **Dependencies**: External systems, teams, or APIs this relies on.
+- **Assumptions**: Expected true, not guaranteed.
+- **Constraints**: Limits on time, budget, tech, capacity.
+- **Dependencies**: External systems, teams, APIs.
 
 ## Risks & Open Questions
 
-- **Risk**: {description} — likelihood: {low/medium/high} — mitigation: {plan}
+- **Risk**: {description} — likelihood: {L/M/H} — mitigation: {plan}
 - [ ] Open question 1
-- [ ] Open question 2
 
 ## Success Metrics
 
-How will we know this succeeded? Measurable outcomes only.
+Measurable outcomes only.
 
 - {metric}: target {value}
 
 ## References
 
 - Related PRDs, RFCs, ADRs, C4 diagrams (relative paths)
+- Web sources researched (URLs)
