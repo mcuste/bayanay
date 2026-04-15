@@ -12,6 +12,8 @@ Generate Mermaid diagram with Material Design styling.
 
 Read [`assets/material-theme.txt`](assets/material-theme.txt). Paste contents verbatim as first line of Mermaid block. Never reconstruct from memory.
 
+**Renderer compatibility**: `packet-beta` (≥ 11.0) and `kanban` (≥ 11.4) need Mermaid 11 — they won't render on GitHub (runs 10.9.x). All types support `%%{init}%%` since Mermaid 10.5.
+
 ### Semantic Colors
 
 Apply only to nodes with clear semantic role. Leave neutral nodes unstyled.
@@ -84,6 +86,7 @@ Type-specific syntax in [references/diagram-types.md](references/diagram-types.m
 ## 4 — Generate
 
 **Layout:**
+
 - Default `TD`. Use `LR` only for horizontal flows (pipelines, data streams).
 - Max ~100 chars rendered width. Use `<br/>` for long labels. Max 3–4 side-by-side nodes.
 - Short IDs (`req`, `auth`, `db`), descriptive labels.
@@ -92,6 +95,7 @@ Type-specific syntax in [references/diagram-types.md](references/diagram-types.m
 - Split at ~15 nodes or when audiences differ.
 
 **Labels:**
+
 - Node labels: Title case, max ~30 chars. Use `<br/>` to wrap.
 - Edge labels: lowercase, max ~15 chars (1–3 words). Omit when self-evident.
 - Dense cross-edges → switch to `LR` for more label space.
@@ -115,6 +119,7 @@ Re-check bolded warnings in [references/diagram-types.md](references/diagram-typ
 ```
 
 Brief explanation and any simplifications made.
+
 ```
 
 Save to file only if user specifies path. Note beta types (`sankey-beta`, `xychart-beta`, `architecture-beta`, `packet-beta`, `block-beta`) have varying renderer support.

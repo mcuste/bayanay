@@ -176,7 +176,7 @@ quadrantChart
 - Quadrants: 1=top-right, 2=top-left, 3=bottom-left, 4=bottom-right
 - Points: `Label: [x, y]` with 0.0–1.0 coordinates
 
-## Sankey Diagram (`sankey-beta`)
+## Sankey Diagram (`sankey-beta`) — ≥ 10.3
 
 ```mermaid
 sankey-beta
@@ -225,7 +225,7 @@ C4Context
 - One C4 level per diagram
 - **Arrow routing**: hub-and-spoke causes arrows through nodes. Add `UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")` after `title` to spread elements. Crossings persist → split into two diagrams.
 
-## Block Diagram (`block-beta`)
+## Block Diagram (`block-beta`) — ≥ 10.6
 
 ```mermaid
 block-beta
@@ -245,7 +245,7 @@ block-beta
 - **Styling**: `classDef`/`:::` not supported inside nested `block:...:end` — use `style nodeId fill:...,stroke:...,color:...` after all `end` keywords
 - **Connected nodes → use `flowchart` + `subgraph` instead** (block-beta arrows pass through nodes). Reserve `block-beta` for static layouts with no/few arrows.
 
-## Architecture Diagram (`architecture-beta`)
+## Architecture Diagram (`architecture-beta`) — ≥ 10.9
 
 ```mermaid
 architecture-beta
@@ -263,7 +263,7 @@ architecture-beta
 - Edge anchors: T, B, L, R
 - **Labels: alphanumeric + spaces only** — no `.` `-` `/` `[` `]`. `Node.js` → `NodeJS`, `ECS - API` → `ECS API`. Special chars needed → fall back to `flowchart TD` + `subgraph`.
 
-## Packet Diagram (`packet-beta`)
+## Packet Diagram (`packet-beta`) — ≥ 11.0 ⚠️ no GitHub
 
 ```mermaid
 packet-beta
@@ -276,7 +276,7 @@ packet-beta
 - `start-end: "Label"` per field
 - Rows wrap at 32 bits by default
 
-## Kanban Board
+## Kanban Board — ≥ 11.4 ⚠️ no GitHub
 
 ```mermaid
 kanban
@@ -291,7 +291,7 @@ kanban
 
 - Column names top-level, tasks indented under columns
 
-## XY Chart (`xychart-beta`)
+## XY Chart (`xychart-beta`) — ≥ 10.5
 
 ```mermaid
 xychart-beta
