@@ -1,8 +1,6 @@
 # Diagram Type Reference
 
-Type-specific Mermaid syntax. Read the section for the diagram type you are generating.
-
----
+Read section for diagram type you're generating.
 
 ## Flowchart
 
@@ -14,12 +12,10 @@ flowchart TD
     C -->|no| E([End])
 ```
 
-- Orientations: `TD` (top-down), `LR` (left-right), `BT`, `RL`
+- Orientations: `TD`, `LR`, `BT`, `RL`
 - Shapes: `[rect]`, `(round)`, `([stadium])`, `{diamond}`, `[(cylinder)]`, `[[subroutine]]`, `{{hexagon}}`, `>asymmetric]`, `[/parallelogram/]`
 - Subgraphs: `subgraph id [title] ... end`
 - Links: `-->`, `---`, `-.->`, `==>`, `--text-->`, `-->|text|`
-
----
 
 ## Sequence Diagram
 
@@ -36,15 +32,13 @@ sequenceDiagram
     deactivate S
 ```
 
-- Use short aliases: `participant C as Client`
+- Short aliases: `participant C as Client`
 - Sync: `->>`, response: `-->>`, open: `->`
 - `activate`/`deactivate` for lifelines
 - `rect rgb(...)` for grouping
 - `Note over A,B: text` for annotations
 - `alt`/`else`/`end` for conditionals, `loop`/`end` for loops
-- Max 6 participants before splitting
-
----
+- Max 6 participants; split beyond that
 
 ## State Diagram
 
@@ -63,8 +57,6 @@ stateDiagram-v2
 - Terminals: `[*] -->` (start), `--> [*]` (end)
 - `<<fork>>` and `<<join>>` for parallel states
 
----
-
 ## ER Diagram
 
 ```mermaid
@@ -81,9 +73,7 @@ erDiagram
 
 - Cardinality: `||` exactly one, `o|` zero or one, `|{` one+, `o{` zero+
 - Show PK/FK/UK only — omit low-value attributes
-- Relationship labels in quotes
-
----
+- Relationship labels must be quoted
 
 ## Class Diagram
 
@@ -101,9 +91,7 @@ classDiagram
 - Visibility: `+` public, `-` private, `#` protected, `~` package
 - Relationships: `<|--` inheritance, `*--` composition, `o--` aggregation, `-->` association, `..>` dependency, `..|>` realization
 - Annotations: `<<interface>>`, `<<abstract>>`, `<<enumeration>>`
-- **`classDef` application must be inline** — use `class ClassName:::classDefName { ... }`, not standalone `ClassName:::classDefName` lines (those cause parse errors)
-
----
+- **`classDef` must be inline**: `class ClassName:::classDefName { ... }` — standalone `ClassName:::classDefName` causes parse errors
 
 ## Gantt Chart
 
@@ -120,13 +108,11 @@ gantt
     Launch           :milestone, after b2, 0d
 ```
 
-- `dateFormat` must be first
+- `dateFormat` must be first line
 - Group with `section`
 - Dependencies: `after taskId`
 - Milestones: `:milestone, after X, 0d`
-- Status modifiers: `done`, `active`, `crit`
-
----
+- Status: `done`, `active`, `crit`
 
 ## Pie Chart
 
@@ -138,10 +124,8 @@ pie title Distribution
     "Other" : 10
 ```
 
-- Values are proportional, not required to sum to 100
-- Keep to 6–8 slices; group small ones into "Other"
-
----
+- Values proportional, don't need to sum to 100
+- Max 6–8 slices; group small ones into "Other"
 
 ## Mindmap
 
@@ -157,9 +141,7 @@ mindmap
 
 - Indentation defines hierarchy
 - Root shapes: `((circle))`, `[square]`, `(rounded)`
-- Keep to 3–4 levels deep; short labels
-
----
+- Max 3–4 levels deep
 
 ## Timeline
 
@@ -173,10 +155,8 @@ timeline
     2024-Q4 : GA launch
 ```
 
-- Time period on its own line; events indented with `:`
-- Multiple events per period are allowed
-
----
+- Time period on own line; events indented with `:`
+- Multiple events per period allowed
 
 ## Quadrant Chart
 
@@ -196,8 +176,6 @@ quadrantChart
 - Quadrants: 1=top-right, 2=top-left, 3=bottom-left, 4=bottom-right
 - Points: `Label: [x, y]` with 0.0–1.0 coordinates
 
----
-
 ## Sankey Diagram (`sankey-beta`)
 
 ```mermaid
@@ -210,9 +188,7 @@ sankey-beta
 
 - CSV format: `source,target,value`
 - Values control flow width
-- Keep to ~10–15 flows for readability
-
----
+- Max ~10–15 flows
 
 ## Git Graph
 
@@ -231,8 +207,6 @@ gitGraph
 - Tags: `commit id: "v1.0" tag: "v1.0"`
 - `cherry-pick id: "id"`
 
----
-
 ## C4 Diagrams
 
 ```mermaid
@@ -249,9 +223,7 @@ C4Context
 - Elements: `Person()`, `System()`, `System_Ext()`, `Container()`, `Component()`
 - Boundaries: `Boundary(id, "Label") { ... }`
 - One C4 level per diagram
-- **Arrow routing**: C4 uses a grid layout. On hub-and-spoke patterns arrows often route through other nodes. Add `UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")` right after the `title` line to control elements per row — tuning this value spreads nodes out and gives arrows cleaner paths. If crossings persist, split into two diagrams (users→system, system→external services).
-
----
+- **Arrow routing**: hub-and-spoke causes arrows through nodes. Add `UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")` after `title` to spread elements. Crossings persist → split into two diagrams.
 
 ## Block Diagram (`block-beta`)
 
@@ -270,10 +242,8 @@ block-beta
 - `columns N` sets grid width; `:N` spans N columns
 - `space` for empty cells
 - `block:id ... end` for nested containers
-- **Styling nodes**: `classDef`/`:::` is not supported inside nested `block:...:end` containers. Use `style nodeId fill:...,stroke:...,color:...` statements after all `end` keywords instead.
-- **When to avoid `block-beta`**: it uses a fixed grid layout — blocks size unpredictably and edge routing is poor (arrows pass through nodes). If the diagram has connections between nodes, use `flowchart TD/LR` with `subgraph` boundaries instead, which gives proper edge routing and predictable sizing. Reserve `block-beta` for static layout diagrams with no or very few arrows.
-
----
+- **Styling**: `classDef`/`:::` not supported inside nested `block:...:end` — use `style nodeId fill:...,stroke:...,color:...` after all `end` keywords
+- **Connected nodes → use `flowchart` + `subgraph` instead** (block-beta arrows pass through nodes). Reserve `block-beta` for static layouts with no/few arrows.
 
 ## Architecture Diagram (`architecture-beta`)
 
@@ -290,10 +260,8 @@ architecture-beta
 - `group id(icon)[Label]` for boundaries
 - `service id(icon)[Label] in group`
 - Icons: `cloud`, `server`, `database`, `internet`, `disk`
-- Connections use edge anchors: T, B, L, R
-- **Label restriction:** Labels must contain only alphanumeric characters and spaces — no `.`, `-`, `/`, `[`, `]`, or other punctuation. `Node.js` → `NodeJS`, `ECS - API` → `ECS API`. If labels require special characters, use `flowchart TD` with `subgraph` for the boundary instead.
-
----
+- Edge anchors: T, B, L, R
+- **Labels: alphanumeric + spaces only** — no `.` `-` `/` `[` `]`. `Node.js` → `NodeJS`, `ECS - API` → `ECS API`. Special chars needed → fall back to `flowchart TD` + `subgraph`.
 
 ## Packet Diagram (`packet-beta`)
 
@@ -305,10 +273,8 @@ packet-beta
     64-95: "Acknowledgment Number"
 ```
 
-- `start-end: "Label"` for each field
+- `start-end: "Label"` per field
 - Rows wrap at 32 bits by default
-
----
 
 ## Kanban Board
 
@@ -323,9 +289,7 @@ kanban
         Task D
 ```
 
-- Column names as top-level items, tasks indented under columns
-
----
+- Column names top-level, tasks indented under columns
 
 ## XY Chart (`xychart-beta`)
 
@@ -339,9 +303,7 @@ xychart-beta
 ```
 
 - `bar [values]` and/or `line [values]`
-- Keep data points under ~15
-
----
+- Max ~15 data points
 
 ## Requirement Diagram
 
@@ -363,10 +325,8 @@ requirementDiagram
 - Risk: `low`, `medium`, `high`
 - Verify: `analysis`, `inspection`, `test`, `demonstration`
 - Relations: `satisfies`, `traces`, `contains`, `derives`, `refines`, `copies`
-- **`text:` field is plain text only** — no `<br/>`, HTML, or special characters. Keep it to one concise sentence.
-- **Avoid hyphens everywhere** — hyphens in identifiers, `id:` values, or node names are parsed as relation arrow tokens and cause parse errors. Use underscores instead (`REQ_001`, `auth_service`, not `REQ-001`, `auth-service`).
-
----
+- **`text:` plain text only** — no `<br/>`, HTML, special chars
+- **No hyphens in identifiers/`id:` values/node names** — parsed as arrow tokens. Use underscores: `REQ_001` not `REQ-001`
 
 ## Journey Diagram
 
@@ -383,5 +343,5 @@ journey
 ```
 
 - Format: `Task name: satisfaction(1–5): actor`
-- Higher number = better satisfaction
+- Higher = better satisfaction
 - Group with `section`
