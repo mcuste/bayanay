@@ -22,7 +22,7 @@ Each plugin adds slash-command skills, specialized agents, and curated reference
 | **[general](plugins/general)**    | General-purpose utilities — Mermaid diagrams, PRDs, [caveman mode](https://github.com/sublayerapp/caveman) — heavily inspired by the original, particularly useful for creating concise skills, rules, and guidelines |
 
 > [!WARNING]
-> The Python and Terraform plugins were LLM-generated based on an earlier iteration of the Rust plugin and have not been tested in real workflows yet. They are highly likely to produce poor results in their current state. The Rust plugin is the only battle-tested one.
+> The Python and Terraform plugins were LLM-generated based on an earlier iteration of the Rust plugin and have not been tested in real workflows yet. They are highly likely to produce poor results in their current state. The Rust plugin is the one I've experimented with the most.
 
 ## Installation
 
