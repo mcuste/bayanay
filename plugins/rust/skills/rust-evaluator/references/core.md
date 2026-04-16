@@ -36,6 +36,9 @@ Always loaded. Applies to all Rust code.
 - [core-err-anyhow-app] ALWAYS use `anyhow`/`eyre` for app-level errors reported to humans
 - [core-err-context] ALWAYS add `.context()` when propagating across abstraction boundaries
 - [core-err-typed-vs-opaque] ALWAYS prefer typed enums when caller behavior changes per failure mode; opaque errors when all failures get same treatment
+- [core-err-context-static] ALWAYS prefer `.context("msg")?` over `.ok_or_else(|| anyhow!("msg"))?` for static messages — works on both `Result` and `Option`
+- [core-err-with-context] ALWAYS prefer `.with_context(|| format!(...))` for dynamic messages — lazy allocation
+- [core-err-no-context-format] NEVER use `.context(format!(...))` — eagerly allocates on success path; use `.with_context(|| format!(...))` instead
 
 ## Type Design
 

@@ -88,6 +88,9 @@ Default: simpler path wins.
 - **NEVER** use `anyhow` in public APIs of published crates — callers can't downcast across semver
 - **ALWAYS** add `.context()` when propagating across abstraction boundaries
 - **ALWAYS** justify each enum variant: if no caller matches on it, collapse or use `.context()` instead
+- **ALWAYS** prefer `.context("msg")?` over `.ok_or_else(|| anyhow!("msg"))?` for static messages — works on both `Result` and `Option`
+- **ALWAYS** prefer `.with_context(|| format!(...))` for dynamic messages — lazy allocation
+- **NEVER** use `.context(format!(...))` — eagerly allocates on success path; use `.with_context(|| format!(...))` instead
 
 ### Type Design
 

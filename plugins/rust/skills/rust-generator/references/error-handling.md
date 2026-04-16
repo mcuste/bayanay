@@ -22,6 +22,9 @@
 - **ALWAYS** prefer `#[from]` for direct 1:1 source wrapping; manual `From` when conversion adds context
 - **NEVER** create catch-all `Other(String)`/`Internal(String)` variants — use `anyhow` for catch-all; exception: app-level error enums wrapping 5+ heterogeneous source types where callers only propagate (not match)
 - **ALWAYS** prefer `inspect_err` over `map_err` for side-effect-only closures (logging)
+- **ALWAYS** prefer `.context("msg")?` over `.ok_or_else(|| anyhow!("msg"))?` for static messages — works on both `Result` and `Option` (requires `use anyhow::Context`)
+- **ALWAYS** prefer `.with_context(|| format!("msg: {var}"))?` over `.ok_or_else(|| anyhow!("msg: {var}"))?` for dynamic messages — same brevity, lazy allocation
+- **NEVER** use `.context(format!("msg: {var}"))` — eagerly allocates on every call including success path; use `.with_context(|| format!(...))` instead
 
 ## snafu
 
