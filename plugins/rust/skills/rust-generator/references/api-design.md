@@ -2,6 +2,7 @@
 
 - **ALWAYS** use least restrictive closure bound: `Fn` → `FnMut` → `FnOnce`
 - **ALWAYS** prefer `impl Fn(T) -> R` over `Box<dyn Fn(T) -> R>` unless closure must be stored
+- **NEVER** `&impl Fn` — `Fn` auto-impl'd for `&F`, use `impl Fn` directly
 
 ## Slice Patterns
 
@@ -11,6 +12,7 @@
 
 - **ALWAYS** prefer `impl IntoIterator<Item = T>` over `&[T]` for params that only iterate
 - **ALWAYS** prefer `impl AsRef<Path>` over `&Path` for read-only params
+- **NEVER** `impl AsRef<T>`/`impl Borrow<T>` when body immediately clones to owned — take owned type or `impl Into<Owned>`
 
 ## Naming Conventions
 

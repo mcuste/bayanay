@@ -56,7 +56,7 @@ Default: simpler path wins.
 
 ### Code Patterns
 
-- **ALWAYS** prefer iterator chains over imperative loops for filter/map/collect
+- **ALWAYS** prefer iterator chains over imperative loops for filter/map/collect — except when chain requires per-element allocation (`vec![]` in `flat_map`) that a loop avoids
 - **NEVER** use iterator chains for multi-branch control flow (break with value, continue with side-effect, nested match) — use `for` loop; `try_fold`/`try_collect` for `Result`-based early exit
 - **ALWAYS** prefer `Option`/`Result` combinators (`and_then`, `zip`, `filter`, `unwrap_or_else`) over nested `match`/`if let` for linear transforms
 - **ALWAYS** prefer tuple destructuring `|(key, value)|` over `.0`/`.1` in closures

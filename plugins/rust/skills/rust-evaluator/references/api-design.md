@@ -4,6 +4,7 @@
 
 - [api-least-closure] ALWAYS use least restrictive closure bound: `Fn` → `FnMut` → `FnOnce`
 - [api-impl-fn] ALWAYS prefer `impl Fn(T) -> R` over `Box<dyn Fn(T) -> R>` unless closure must be stored
+- [api-no-ref-impl-fn] NEVER `&impl Fn` — `Fn` auto-impl'd for `&F`, use `impl Fn` directly
 
 ## Slice Patterns
 
@@ -13,6 +14,7 @@
 
 - [api-into-iterator] ALWAYS prefer `impl IntoIterator<Item = T>` over `&[T]` for params that only iterate
 - [api-asref-path] ALWAYS prefer `impl AsRef<Path>` over `&Path` for read-only params
+- [api-no-borrow-then-clone] NEVER `impl AsRef<T>`/`impl Borrow<T>` when body immediately clones to owned — take owned type or `impl Into<Owned>`
 
 ## Naming Conventions
 

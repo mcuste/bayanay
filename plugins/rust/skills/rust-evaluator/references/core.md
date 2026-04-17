@@ -9,7 +9,7 @@ Always loaded. Applies to all Rust code.
 
 ## Code Patterns
 
-- [core-iter-chain] ALWAYS prefer iterator chains over imperative loops for filter/map/collect
+- [core-iter-chain] ALWAYS prefer iterator chains over imperative loops for filter/map/collect — except when chain requires per-element allocation (`vec![]` in `flat_map`) that a loop avoids
 - [core-iter-no-branch] NEVER use iterator chains for multi-branch control flow (break with value, continue with side-effect, nested match) — use `for` loop; `try_fold`/`try_collect` for `Result`-based early exit
 - [core-combinators] ALWAYS prefer `Option`/`Result` combinators (`and_then`, `zip`, `filter`, `unwrap_or_else`) over nested `match`/`if let` for linear transforms
 - [core-tuple-destructure] ALWAYS prefer tuple destructuring `|(key, value)|` over `.0`/`.1` in closures
