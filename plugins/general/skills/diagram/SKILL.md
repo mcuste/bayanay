@@ -12,7 +12,7 @@ Generate Mermaid diagram with Material Design styling.
 
 Read [`assets/material-theme.txt`](assets/material-theme.txt). Paste contents verbatim as first line of Mermaid block. Never reconstruct from memory.
 
-**Renderer compatibility**: `packet-beta` (≥ 11.0) and `kanban` (≥ 11.4) need Mermaid 11 — they won't render on GitHub (runs 10.9.x). All types support `%%{init}%%` since Mermaid 10.5.
+**Renderer compatibility**: beta types have version requirements and varying platform support — check [references/diagram-types.md](references/diagram-types.md) headers. All types support `%%{init}%%` since Mermaid 10.5.
 
 ### Semantic Colors
 
@@ -27,7 +27,7 @@ Apply only to nodes with clear semantic role. Leave neutral nodes unstyled.
 | Yellow | `#FFF9C4` / `#F9A825` | Pending, caution, note           |
 | Grey   | `#F5F5F5` / `#616161` | Disabled, deprecated             |
 
-Per-type coloring syntax (e.g. sequence diagrams use `rect rgb(...)` not `classDef`) in [references/styling-guide.md](references/styling-guide.md).
+Per-type coloring syntax (e.g. sequence diagrams use `rect rgb(...)` not `classDef`) in [references/diagram-types.md](references/diagram-types.md).
 
 ### Example
 
@@ -100,7 +100,7 @@ Type-specific syntax in [references/diagram-types.md](references/diagram-types.m
 - Edge labels: lowercase, max ~15 chars (1–3 words). Omit when self-evident.
 - Dense cross-edges → switch to `LR` for more label space.
 
-**Flowchart shapes:** start/end `([…])`, process `[…]`, decision `{…?}`, storage `[(…)]`, external `[[…]]`.
+**Flowchart shapes:** see [references/diagram-types.md](references/diagram-types.md) Flowchart section. Use semantic shapes: `([…])` start/end, `{…?}` decision, `[(…)]` storage.
 
 ## 5 — Validate
 

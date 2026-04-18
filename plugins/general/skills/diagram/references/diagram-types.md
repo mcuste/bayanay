@@ -1,6 +1,8 @@
 # Diagram Type Reference
 
-Read section for diagram type you're generating.
+Read section for diagram type you're generating. Each section includes syntax and styling notes where applicable.
+
+**No per-node styling**: `erDiagram`, `gantt`, `pie`, `mindmap`, `timeline`, `quadrant`, `sankey-beta`, `gitGraph`, `xychart-beta`, `packet-beta`, `kanban`, `journey`, `requirementDiagram` — theme `%%{init}%%` handles colors.
 
 ## Flowchart
 
@@ -16,6 +18,7 @@ flowchart TD
 - Shapes: `[rect]`, `(round)`, `([stadium])`, `{diamond}`, `[(cylinder)]`, `[[subroutine]]`, `{{hexagon}}`, `>asymmetric]`, `[/parallelogram/]`
 - Subgraphs: `subgraph id [title] ... end`
 - Links: `-->`, `---`, `-.->`, `==>`, `--text-->`, `-->|text|`
+- Styling: `classDef` + `:::` on nodes (see SKILL.md example)
 
 ## Sequence Diagram
 
@@ -35,10 +38,10 @@ sequenceDiagram
 - Short aliases: `participant C as Client`
 - Sync: `->>`, response: `-->>`, open: `->`
 - `activate`/`deactivate` for lifelines
-- `rect rgb(...)` for grouping
 - `Note over A,B: text` for annotations
 - `alt`/`else`/`end` for conditionals, `loop`/`end` for loops
 - Max 6 participants; split beyond that
+- Styling: `classDef` not supported. Use `rect rgb(...)` blocks for colored regions. RGB values: green `rgb(200,230,201)`, pink `rgb(248,187,208)`, purple `rgb(225,190,231)`, yellow `rgb(255,249,196)`
 
 ## State Diagram
 
@@ -52,6 +55,7 @@ stateDiagram-v2
     Error --> [*] : shutdown()
 ```
 
+- Styling: `classDef` + `:::` on states
 - `state "Label" as id` for readable names
 - Composite: `state "Group" as g { inner1 --> inner2 }`
 - Terminals: `[*] -->` (start), `--> [*]` (end)
@@ -223,6 +227,7 @@ C4Context
 - Elements: `Person()`, `System()`, `System_Ext()`, `Container()`, `Component()`
 - Boundaries: `Boundary(id, "Label") { ... }`
 - One C4 level per diagram
+- Styling: `System_Ext` auto-styled by C4. No additional coloring needed.
 - **Arrow routing**: hub-and-spoke causes arrows through nodes. Add `UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")` after `title` to spread elements. Crossings persist → split into two diagrams.
 
 ## Block Diagram (`block-beta`) — ≥ 10.6
@@ -243,7 +248,7 @@ block-beta
 - `space` for empty cells
 - `block:id ... end` for nested containers
 - **Styling**: `classDef`/`:::` not supported inside nested `block:...:end` — use `style nodeId fill:...,stroke:...,color:...` after all `end` keywords
-- **Connected nodes → use `flowchart` + `subgraph` instead** (block-beta arrows pass through nodes). Reserve `block-beta` for static layouts with no/few arrows.
+- **Connected nodes → use `flowchart` + `subgraph` instead** (arrows pass through nodes)
 
 ## Architecture Diagram (`architecture-beta`) — ≥ 10.9
 
@@ -261,6 +266,7 @@ architecture-beta
 - `service id(icon)[Label] in group`
 - Icons: `cloud`, `server`, `database`, `internet`, `disk`
 - Edge anchors: T, B, L, R
+- Styling: no `classDef`. Use `style` if needed (renderer support varies).
 - **Labels: alphanumeric + spaces only** — no `.` `-` `/` `[` `]`. `Node.js` → `NodeJS`, `ECS - API` → `ECS API`. Special chars needed → fall back to `flowchart TD` + `subgraph`.
 
 ## Packet Diagram (`packet-beta`) — ≥ 11.0 ⚠️ no GitHub
