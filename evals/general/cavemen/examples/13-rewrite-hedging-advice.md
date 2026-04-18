@@ -1,0 +1,1 @@
+Use msg queue — RabbitMQ or Kafka. Decouples services → failures handled gracefully. Scale determines which: RabbitMQ for most cases, Kafka for high throughput + event replay. Know your reqs first → pick queue second.

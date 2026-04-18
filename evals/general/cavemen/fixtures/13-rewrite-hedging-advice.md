@@ -1,0 +1,1 @@
+Rewrite this in caveman style: "I think it might be a good idea to consider using a message queue like RabbitMQ or perhaps Kafka for this use case. It could potentially help with decoupling your services, and it would probably make it easier to handle failures gracefully. However, it really depends on your specific requirements and the scale you're targeting."
