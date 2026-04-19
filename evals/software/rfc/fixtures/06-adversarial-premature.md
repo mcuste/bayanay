@@ -1,0 +1,1 @@
+Write an RFC for changing the User model's `created_at` field from DateTime to DateTimeWithTimezone in the database and updating the three endpoints that return user profiles to serialize dates in ISO 8601 format.
