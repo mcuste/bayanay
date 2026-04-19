@@ -10,8 +10,11 @@
 - Ground problem statement in evidence (feedback, data, workarounds), not assertions
 - Challenge vague or untestable inputs
 - Keep requirements at behavior level ("user can filter by date range"), not system level
+- Add one concrete scenario per user story — exposes hidden assumptions abstract stories hide
+- State behavioral boundaries for each requirement — what user sees at limits (not error handling)
 - Distinguish must-haves from nice-to-haves (MoSCoW)
 - Flag scope creep — prompt user to define what's out
+- If request spans multiple independent subsystems, decompose into separate PRDs first
 - Identify distinct personas even if user describes only one
 
 ## DON'T
@@ -21,10 +24,11 @@
 - Present multi-choice questions — they constrain thinking and bias toward your assumptions
 - Invent features user didn't ask for
 - Write aspirational fluff — every requirement must be testable or measurable
-- Over-structure simple products — small tool ≠ all 11 sections
+- Over-structure simple products — small tool ≠ all 11 sections; scale sections to complexity
+- Write >300 words per section — split scope or move to technical doc
 - Assume single user type
 - Prescribe UI/UX specifics — focus on outcomes
-- Include edge case / error handling detail — belongs in technical specs
+- Include edge case / error handling detail — belongs in technical specs (behavioral boundaries are OK)
 
 ## PRD Lifecycle
 
