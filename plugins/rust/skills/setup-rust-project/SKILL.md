@@ -30,6 +30,7 @@ Set up Rust project tooling. Use `AskUserQuestion` to gather info step by step. 
 - "Embedded / no_std"
 - "WASM (browser or WASI)"
 - "Proc macro crate"
+- "Bevy / ECS game engine"
 - "FFI / C interop"
 
 **Q3** — "Which tools do you want to set up?", header: "Tools", multiSelect: true
@@ -57,6 +58,11 @@ Present **only relevant** adjustments. Combine into single `AskUserQuestion` wit
 ### Proc macro crate
 
 - "Relax noisy lints for proc macros (Recommended)" — allow `too_many_lines`, `cognitive_complexity`, `wildcard_imports`, `similar_names`
+
+### Bevy / ECS game engine
+
+- "Allow `needless_pass_by_value` — Bevy system params (`Res<T>`, `Query<T>`, etc.) must be owned (Recommended)" — set `needless_pass_by_value = "allow"`
+- "Allow `too_many_arguments` — Bevy systems take one param per ECS resource/query (Recommended)" — set `too_many_arguments = "allow"`
 
 ### FFI / C interop
 
