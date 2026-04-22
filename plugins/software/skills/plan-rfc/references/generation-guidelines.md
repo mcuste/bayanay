@@ -4,7 +4,7 @@
 
 ### Size
 
-One milestone = one atomic code change (~5 min). Single fn, test file, config change, or wiring step. Not a PR — PR contains many milestones. Needs "and" → split it.
+One milestone = one cohesive code change (~30 min). A meaningful feature chunk — multiple related fns, a module slice, a test suite for a component, a complete config layer. Not a PR — PR may contain several milestones. Needs "and" joining two unrelated concerns → split it.
 
 ### Three Phases (strict order)
 
@@ -58,7 +58,7 @@ LLM executor → more explicit: concrete input/output mappings, pre/postconditio
 
 ## Pitfalls
 
-- **Too big** — can't impl in ~5 min → split.
+- **Too big** — can't impl in ~30 min → split.
 - **Phase leakage** — error handling in Phase 1, happy-path in Phase 2. Keep phases clean.
 - **Vague** — "add middleware" → which file? fn? signature?
 - **Cross-references** — "similar to M3" → repeat details, executor reads milestones in isolation.

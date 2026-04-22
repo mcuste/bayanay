@@ -1,10 +1,10 @@
 ---
 name: plan-rfc
-description: "Create or update implementation plan for accepted RFC. Decompose RFC goals into ultra-granular milestones (~5 min each), grouped by phase: core first, then details, then polish. References PRDs, C4, ADRs, related RFCs. Trigger phrases: 'plan RFC', 'create plan for RFC', 'implementation plan for', 'update plan'. Planning only — implementation done by language-specific generators."
-argument-hint: "<'update [plan path]' | RFC path or ID>"
+description: "Create or update implementation plan for accepted RFC. Decompose RFC goals into milestones (~30 min each), grouped by phase: core first, then details, then polish. References PRDs, C4, ADRs, related RFCs. Trigger phrases: 'plan RFC', 'create plan for RFC', 'implementation plan for', 'update plan', 'continue plan'. Planning only — implementation done by language-specific generators."
+argument-hint: "<'update [plan path]' | 'continue' | RFC path or ID>"
 model: opusplan
 effort: high
-version: 2.1.0
+version: 3.0.0
 allowed-tools: "Bash(mkdir*), Read, Glob, Grep, Write, Edit, WebSearch, WebFetch, Skill"
 ---
 
@@ -18,6 +18,8 @@ Short, direct output. Lead with actions, skip filler. **Every step mandatory —
 ## Mode
 
 - **`$ARGUMENTS` starts with "update"** → [Update Plan](#update-plan)
+- **`$ARGUMENTS` starts with "continue"** → [Continue Plan](#continue-plan)
+- **WIP exists in `docs/plans/WIP-*.md`** → [Continue Plan](#continue-plan)
 - **Else** → [Create Plan](#create-plan)
 
 ---
@@ -35,11 +37,22 @@ Short, direct output. Lead with actions, skip filler. **Every step mandatory —
 
 Unknown deps/APIs/libs → `Skill("{lang}:{lang}-researcher")` or web-search. Verify current APIs, version constraints, integration patterns.
 
-### Step 2: Map File Structure
+### Step 2: Scope & File Map
 
 RFC gives architecture direction — use `Skill("{lang}:{lang}-generator")` to refine: fn signatures, type defs, module boundaries, file layout. Not generating code — enough detail for precise milestones.
 
 Map all files to create/modify + what each does. Milestones reference this map. Existing codebases → follow existing patterns and naming.
+
+Write WIP with context summary + file map:
+
+1. Write `docs/plans/WIP-{slug}.md` with:
+   - RFC reference, goals summary, scope understanding
+   - File structure map (all created/modified files + purpose)
+   - Key architectural decisions from RFC/ADRs
+2. Add `## Pending Input` — confirm understanding, flag concerns, adjust scope.
+3. Tell user: `/plan-rfc continue` with feedback.
+
+**ALWAYS wait for user confirmation — NEVER proceed without it.**
 
 ### Step 3: Decompose into Milestones
 
@@ -47,7 +60,7 @@ Per [`references/generation-guidelines.md`](references/generation-guidelines.md)
 
 Milestones target zero-context executor — no project knowledge, no taste, no judgment. Each self-contained: never "similar to M3" or "same as above" — repeat all details. If executor can't implement from milestone alone → underspecified.
 
-Each milestone = one atomic change, ~5 min. Single fn, test file, config change, or wiring step. PR may contain many milestones.
+Each milestone = one cohesive change, ~30 min. A meaningful feature chunk — multiple related fns, a module slice, a test suite for a component. PR may contain several milestones.
 
 Three phases, strictly ordered:
 
@@ -66,13 +79,13 @@ Within each phase:
   - Refactors split across milestones → each intermediate state must compile. Use temporary re-exports, adapter fns, or lint-suppression annotations (later milestone removes).
   - Never add import, type ref, or fn call whose target doesn't exist yet. Milestone N calls `foo()` → `foo()` must exist (even as stub) by end of milestone N or earlier.
   - Stubs and no-op impls OK if they compile and aren't hit at runtime on current happy path.
-- "and" joining two concerns → split into two milestones.
+- "and" joining two unrelated concerns → split into two milestones.
 
 Descriptions must be implementation-specific. Not "add rate limiting" → "create `createRateLimiter()` factory in `src/middleware/rate-limit.ts` returning express-rate-limit middleware with Redis store". Name files, fns, types, modules.
 
 Every RFC goal → >=1 milestone. Flag any uncovered goal.
 
-### Step 4: Acceptance Criteria
+#### Acceptance Criteria
 
 Per [`references/generation-guidelines.md`](references/generation-guidelines.md):
 
@@ -84,14 +97,14 @@ Per [`references/generation-guidelines.md`](references/generation-guidelines.md)
 
 LLM-agent implementers → concrete input/output mappings, pre/postconditions, invariants, enumerated edge cases. Tests before impl. Tautological tests (asserting what code does, not what it should do) = #1 LLM testing failure.
 
-### Step 5: Self-Review
+#### Self-Review
 
 Do NOT present until all pass:
 
 - [ ] File map covers all created/modified files
 - [ ] Every RFC goal → >=1 milestone
 - [ ] Grouped: Core → Details → Polish
-- [ ] Each milestone ~5-min-sized (one atomic change)
+- [ ] Each milestone ~30-min-sized (one cohesive change)
 - [ ] Phase 1 starts with walking skeleton (thinnest end-to-end)
 - [ ] Phase 1 = happy-path only — no error handling, config, edge cases
 - [ ] Risk front-loaded within each phase
@@ -102,11 +115,41 @@ Do NOT present until all pass:
 - [ ] No placeholders, TBDs, TODOs
 - [ ] No unrequested features (YAGNI)
 
-Present for review. **Do not write to disk without user approval.**
+Update WIP with milestones + ACs:
 
-### Step 6: Write
+1. Update `docs/plans/WIP-{slug}.md` — add milestones grouped by phase, with ACs.
+2. Add `## Pending Input` — approve plan, request changes, adjust milestones.
+3. Tell user: `/plan-rfc continue` with feedback.
 
-Save to `docs/plans/PLAN-RFC-{NNN}-{slug}.md`.
+**ALWAYS wait for user approval — NEVER proceed without it.**
+
+### Step 4: Finalize
+
+On approval:
+
+1. Rename WIP → `docs/plans/PLAN-RFC-{NNN}-{slug}.md`.
+2. Delete WIP if separate from final.
+
+---
+
+## Continue Plan
+
+Resume WIP from last pause point.
+
+### Step 1: Load WIP
+
+1. Find WIP: `$ARGUMENTS` path, or glob `docs/plans/WIP-*.md`. Multiple → ask which.
+2. Read WIP. `## Pending Input` = pause point.
+3. `$ARGUMENTS` (after "continue") or user msg = answer to pending question.
+
+### Step 2: Apply and Resume
+
+1. Remove `## Pending Input`.
+2. Incorporate answer into plan.
+3. Resume next step in [Create Plan](#create-plan):
+   - Scope/file map confirmation → Step 3 (Decompose into Milestones)
+   - Plan approval → Step 4 (Finalize)
+   - Change requests → revise, re-run Step 3
 
 ---
 
