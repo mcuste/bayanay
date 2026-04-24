@@ -1,8 +1,10 @@
 # C4 Level 3 — Component: {Container Name}
 
-| Level     | Status | Author | Created      | Last Updated |
-|-----------|--------|--------|--------------|--------------|
-| Component | Draft  | {name} | {YYYY-MM-DD} | {YYYY-MM-DD} |
+- **Level**: Component
+- **Status**: Draft
+- **Author**: {name}
+- **Created**: {YYYY-MM-DD}
+- **Last Updated**: {YYYY-MM-DD}
 
 ## Component Diagram
 

@@ -1,9 +1,9 @@
 # PLAN-RFC-{NNN}: {Title}
 
-**RFC**: [RFC-{NNN}: {Title}](../rfc/RFC-{NNN}-{slug}.md)
-**Status**: Open | In Progress | Done
-**Created**: {YYYY-MM-DD}
-**Updated**: {YYYY-MM-DD}
+- **RFC**: [RFC-{NNN}: {Title}](../rfc/RFC-{NNN}-{slug}.md)
+- **Status**: Open | In Progress | Done
+- **Created**: {YYYY-MM-DD}
+- **Updated**: {YYYY-MM-DD}
 
 ## Context
 

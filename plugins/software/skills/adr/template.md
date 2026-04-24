@@ -1,10 +1,10 @@
 # ADR-{NNN}: {Title}
 
-**Status**: Proposed | Accepted | Deprecated | Superseded by ADR-{NNN}
-**Date**: {YYYY-MM-DD}
-**Deciders**: {names}
-**Affects**: {C4 containers or components affected, e.g., [API Container](../c4/system-container.md)}
-**Implements RFC**: {link to RFC, if applicable}
+- **Status**: Proposed | Accepted | Deprecated | Superseded by ADR-{NNN}
+- **Date**: {YYYY-MM-DD}
+- **Deciders**: {names}
+- **Affects**: {C4 containers or components affected, e.g., [API Container](../c4/system-container.md)}
+- **Implements RFC**: {link to RFC, if applicable}
 
 ## Context
 

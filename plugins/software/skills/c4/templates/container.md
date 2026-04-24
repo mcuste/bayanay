@@ -1,8 +1,10 @@
 # C4 Level 2 — Container: {System Name}
 
-| Level     | Status | Author | Created      | Last Updated |
-|-----------|--------|--------|--------------|--------------|
-| Container | Draft  | {name} | {YYYY-MM-DD} | {YYYY-MM-DD} |
+- **Level**: Container
+- **Status**: Draft
+- **Author**: {name}
+- **Created**: {YYYY-MM-DD}
+- **Last Updated**: {YYYY-MM-DD}
 
 ## Container Diagram
 

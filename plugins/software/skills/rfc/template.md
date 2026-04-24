@@ -1,11 +1,11 @@
 # RFC-{NNN}: {Title}
 
-**ID**: RFC-{NNN}
-**Status**: Draft | In Review | Accepted | Rejected | In Progress | Implemented | Superseded | On Hold
-**Proposed by**: {name — human stakeholder accountable for the decision}
-**Created**: {YYYY-MM-DD}
-**Last Updated**: {YYYY-MM-DD}
-**Targets**: {C4 | Implementation | ADR — list all that apply}
+- **ID**: RFC-{NNN}
+- **Status**: Draft | In Review | Accepted | Rejected | In Progress | Implemented | Superseded | On Hold
+- **Proposed by**: {name — human stakeholder accountable for the decision}
+- **Created**: {YYYY-MM-DD}
+- **Last Updated**: {YYYY-MM-DD}
+- **Targets**: {C4 | Implementation | ADR — list all that apply}
 
 ## Problem / Motivation
 

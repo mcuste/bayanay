@@ -1,8 +1,10 @@
 # C4 Level 1 — System Context: {System Name}
 
-| Level   | Status | Author | Created      | Last Updated |
-|---------|--------|--------|--------------|--------------|
-| Context | Draft  | {name} | {YYYY-MM-DD} | {YYYY-MM-DD} |
+- **Level**: Context
+- **Status**: Draft
+- **Author**: {name}
+- **Created**: {YYYY-MM-DD}
+- **Last Updated**: {YYYY-MM-DD}
 
 ## System Context
 
