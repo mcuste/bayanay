@@ -52,15 +52,16 @@ Surface what's already decided. Don't re-litigate.
 - Multi-choice (a/b/c) preferred over open-ended when feasible.
 - Suggest options with tradeoffs; do NOT only ask open-ended.
 
-**Per-step pushback** — apply ALL FIVE lenses to every concrete user proposal BEFORE asking next question. See [`references/pushback-lenses.md`](references/pushback-lenses.md) for full text.
+**Per-step pushback** — apply ALL SIX lenses to every concrete user proposal BEFORE asking next question. See [`references/pushback-lenses.md`](references/pushback-lenses.md) for full text.
 
 1. **YAGNI** — what drops now, add later if needed?
-2. **Simpler alternative** — known simpler path? Name it or say "no, because…"
+2. **Simpler alternative** — simpler version of SAME approach? Name it or say "no, because…"
 3. **Edge cases** — 2-3 inputs/states proposal mishandles. None found → say so.
 4. **Hidden assumptions** — scale, latency, users, env, deps. Surface, confirm or challenge.
 5. **Failure modes** — partial failure, concurrency, retry, network split. One concrete scenario.
+6. **Alternative angle** — DIFFERENT approach (different paradigm/tool/framing) that solves same problem. Must be concrete and grounded — apply research tiering. Made-up alternative = worse than none.
 
-Lens turned up nothing → say "lens X: nothing found". NEVER silent skip.
+Lens turned up nothing → say "lens X: nothing found". NEVER silent skip. NEVER fabricate alternatives to fill lens 6.
 
 **Research tiering** — see [`references/research-tiering.md`](references/research-tiering.md). Summary:
 
@@ -84,7 +85,7 @@ WIP path: `docs/brainstorm/WIP-{slug}.md`. Single WIP per slug — overwrite. Co
 MANDATORY before notes file. Cannot skip even if dialogue feels resolved. See [`references/pre-mortem.md`](references/pre-mortem.md).
 
 1. State tentative conclusion in 2-3 fragments.
-2. Re-run all five lenses against WHOLE conclusion (not just last proposal).
+2. Re-run all six lenses against WHOLE conclusion (not just last proposal).
 3. **Pre-mortem prompt:** "Six months later, decision wrong. Most likely reason?" Generate 2-3 plausible failure stories. Surface to user.
 4. **Simpler-path challenge:** "Version with one fewer moving part?" If yes, propose. User accepts or rejects explicitly.
 5. **Unanswered list:** what did we NOT resolve? Punted to "later" or "we'll see"? List explicitly.
@@ -99,7 +100,8 @@ Use [`template.md`](template.md). Fill every section. No placeholders.
 
 - [ ] No placeholders, TBDs, TODOs
 - [ ] Every conclusion bullet has reason or sourced citation
-- [ ] All 5 lenses applied at pre-mortem (each labeled raised | nothing)
+- [ ] All 6 lenses applied at pre-mortem (each labeled raised | nothing)
+- [ ] Lens 6 alternatives (if raised) are concrete + grounded, not fabricated
 - [ ] All volatile claims sourced or labeled "unverified"
 - [ ] No silent skips of pushback steps
 - [ ] Rejected alternatives section non-empty (empty → suspect, re-examine)

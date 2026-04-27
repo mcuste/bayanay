@@ -12,9 +12,9 @@ Example:
 
 > Tentative: use Postgres LISTEN/NOTIFY for event bus. single-region. <1k events/sec. fallback to polling on connection drop.
 
-### 2. Re-run All Five Lenses Against Whole Conclusion
+### 2. Re-run All Six Lenses Against Whole Conclusion
 
-Different pass — catches conclusion-level issues missed at per-proposal level.
+Different pass — catches conclusion-level issues missed at per-proposal level. Lens 6 especially valuable here: at conclusion stage, alternative angle may reveal whole approach is wrong shape.
 
 Format same as dialogue lenses (`raised — {finding}` | `nothing found`). Surface to user.
 

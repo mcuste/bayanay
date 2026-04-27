@@ -1,6 +1,8 @@
 # Pushback Lenses
 
-Apply ALL FIVE to every concrete user proposal before asking next question. Caveman style. Never silent-skip.
+Apply ALL SIX to every concrete user proposal before asking next question. Caveman style. Never silent-skip.
+
+Pushback ≠ alternatives. Lenses 1, 3, 4, 5 = find problems. Lens 2 = simpler version of same approach. Lens 6 = different approach entirely. Both kinds matter — surface problems AND propose paths.
 
 Output format per lens:
 
@@ -26,7 +28,7 @@ Rule: name the SPECIFIC item. "feels overscoped" = bad. "the retry config knob w
 
 ## 2. Simpler Alternative
 
-Known simpler path? Existing tool, simpler data model, fewer moving parts?
+Simpler version of SAME approach? Existing tool, simpler data model, fewer moving parts. Same shape, less of it.
 
 Look for: rolling own auth vs library, custom queue vs SQS/Redis, microservices vs monolith, distributed cache vs in-memory, custom framework vs Postgres feature.
 
@@ -35,7 +37,7 @@ Examples:
 - raised — "instead of new event bus, use Postgres LISTEN/NOTIFY. existing infra, no new dep."
 - nothing found — "checked: no managed service fits. custom is simpler than alternatives."
 
-Rule: name the alternative concretely or say "no, because…". Vague "could be simpler" = bad.
+Rule: name the alternative concretely or say "no, because…". Vague "could be simpler" = bad. For DIFFERENT approach (not simpler), use lens 6.
 
 ## 3. Edge Cases
 
@@ -77,6 +79,43 @@ Examples:
 - nothing found — "walked failure tree: each step has explicit handling or accepted-risk note."
 
 Rule: ONE concrete scenario. "could fail in distributed setting" = bad. "if leader dies between commit and ack, follower replays last op = duplicate" = good.
+
+## 6. Alternative Angle
+
+DIFFERENT approach to same problem. Not simpler version — different paradigm, tool, framing. May be equal or more complex but better fit. Generative, not corrective.
+
+Look for:
+
+- different architectural style — event-driven vs request/response, push vs pull, stream vs batch, sync vs async
+- different storage paradigm — relational vs document vs KV vs columnar vs graph
+- different deployment model — serverless vs container vs VM vs edge
+- different tool/library/managed service occupying same niche
+- problem reframing — is stated problem the real problem? does different question dissolve it?
+
+Examples:
+
+- raised — "alternative: instead of polling job queue, webhook callbacks. trades infra (need public endpoint) for latency (push not poll). different shape, solves same coordination problem. [verify current webhook delivery guarantees on platform if relying on it]"
+- raised — "reframe: stated problem 'how to scale write-heavy DB'. alternative framing: 'must writes be synchronous?' async write-behind cache changes shape entirely. user confirms latency budget first."
+- raised — "alt tool: ClickHouse for analytics workload instead of indexed Postgres. column-store fits scan-heavy queries. trades operational complexity (new system) for query performance ([cite version-specific perf claims if surfaced])."
+- nothing found — "considered: event-driven, batch, streaming. each rejected because {reason}. request/response remains best fit for stated constraints."
+
+Rules — ALL must hold for `raised`:
+
+1. Solves SAME underlying problem (not adjacent / different problem).
+2. Concrete — named tool, pattern, paradigm. Not "could try something else".
+3. Grounded — apply [research tiering](research-tiering.md). Volatile claims (current capabilities, pricing, ecosystem state) MUST cite. Stable patterns (CQRS, event sourcing, CRDT) assert from training OK.
+4. Tradeoff named — what gets better, what gets worse vs original. No free-lunch alternatives.
+
+If grounding requires research and research not done → say "alt direction X may apply, would need to verify {specific thing}". DO NOT invent specifics.
+
+Made-up alternatives are WORSE than no alternative — they pollute the design space with phantom options. Say "nothing found" before fabricating.
+
+Difference from lens 2:
+
+- Lens 2: same approach, less of it (drop Redis cache from stack)
+- Lens 6: different approach (replace synchronous queue with event stream)
+
+Both can fire on same proposal. Both can return nothing.
 
 ---
 
